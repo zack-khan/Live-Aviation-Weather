@@ -64,5 +64,16 @@
 
     #forecast-boxes {
         font-size: 14px;
+        display: grid;
+        grid-template-columns: auto auto;
+        margin: auto;
+        padding: auto;
+    }
+
+    .forecast-box {
+        margin: auto;
+        width: 90%;
+        height: 200px;
+        margin-bottom: 5%;
     }
 }
