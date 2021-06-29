@@ -33,3 +33,36 @@
     padding: 0px 5px 0px 1px;
     border-radius: 4px;
 }
+
+@media only screen and (max-width: 950px) {
+    #main-div {
+        display: block;
+    }
+
+    #search-block {
+        margin: auto;
+    }
+
+    #result-box {
+        display: inline-block;
+        text-align: center;
+        align-items: center;
+    }
+
+    #flt-cond {
+        text-align: center;
+        margin: auto;
+    }
+
+    #history-sect {
+        display: none;
+    }
+
+    #forecast-hdng {
+        text-align: center;
+    }
+
+    #forecast-boxes {
+        font-size: 14px;
+    }
+}

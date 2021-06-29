@@ -16,7 +16,7 @@
         <h1>Aviation Weather Dashboard</h1>
     </header>
 
-    <div class="grid grid-cols-4 m-5">
+    <div class="grid grid-cols-4 m-5" id="main-div">
         <div class="block">
             <aside class="block border-2 p-2 mr-5" id="search-block">
                 <h2 class="text-3xl text-center">Search for a City:</h2>
@@ -30,7 +30,7 @@
                         id="search-btn">Search</button>
                 </form>
             </aside>
-            <section class="h-auto border-2 p-2 mr-5 mt-2">
+            <section class="h-auto border-2 p-2 mr-5 mt-2" id="history-sect">
                 <ul id="history">
                     <button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1" type="button">KATL</button>
                 </ul>
@@ -48,7 +48,7 @@
                 </ul>
             </section>
             <section class="h-auto w-full border-2 p-2 mt-5">
-                <h3 class="text-2xl font-bold mb-2">5-Day Forecast:</h3>
+                <h3 class="text-2xl font-bold mb-2" id="forecast-hdng">5-Period Forecast:</h3>
                 <div class="flex" id="forecast-boxes">
                     <section class="box0 bg-gray-700 h-auto w-40 mr-2">
                         <ul class="text-white text-s m-2" id="forecast-data0">
