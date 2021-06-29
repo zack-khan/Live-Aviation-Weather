@@ -71,7 +71,7 @@ function populateForecast(fxData) {
         }
 
         if (fxData.forecast[i].visibility) {
-           forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text(fxData.forecast[i].visibility.miles + " mi");
+           forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("Visibility: " + fxData.forecast[i].visibility.miles + " mi");
         } else {
             forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("No Vis Data");
         }
