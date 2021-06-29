@@ -50,30 +50,39 @@ function populateWeather(wxData) {
 
 function populateForecast(fxData) {
     for (i = 0; i < 5; i++) {
-        forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text(fxData.forecast[i].timestamp.from + " to " + fxData.forecast[i].timestamp.to);
+        if (fxData.forecast[i]) {
+            if (fxData.forecast[i].timestamp.from) {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text(fxData.forecast[i].timestamp.from + " to " + fxData.forecast[i].timestamp.to);
+            }
+            if (fxData.forecast[i].clouds) {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text(fxData.forecast[i].clouds[0].text + " at " + fxData.forecast[i].clouds[0].feet + "ft");
+            } else {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("Skies Clear");
+            }
 
-        if (fxData.forecast[i].clouds) {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text(fxData.forecast[i].clouds[0].text + " at " + fxData.forecast[i].clouds[0].feet + "ft");
-        } else {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("Skies Clear");
-        }
+            if (fxData.forecast[i].conditions) {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text(fxData.forecast[i].conditions[0].text);
+            } else {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text("No Forecast Precip");
+            }
 
-        if (fxData.forecast[i].conditions) {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text(fxData.forecast[i].conditions[0].text);
-        } else {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("No Forecast Precip");
-        }
+            if (fxData.forecast[i].wind) {
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text(fxData.forecast[i].wind.degrees + "° at " + fxData.forecast[i].wind.speed_kts + " kts");
+            } else {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text("No Forecast Wind");
+            }
 
-        if (fxData.forecast[i].wind) {
-           forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text(fxData.forecast[i].wind.degrees + "° at " + fxData.forecast[i].wind.speed_kts + " kts");
+            if (fxData.forecast[i].visibility) {
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("Visibility: " + fxData.forecast[i].visibility.miles + " mi");
+            } else {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("No Vis Data");
+            }
         } else {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("No Forecast Wind");
-        }
-
-        if (fxData.forecast[i].visibility) {
-           forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("Visibility: " + fxData.forecast[i].visibility.miles + " mi");
-        } else {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("No Vis Data");
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text("No Forecast Data");
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("");
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text("");
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text("");
+            forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("");
         }
     }
 }
@@ -93,6 +102,7 @@ function addToHistory () {
 
 searchBtn.on("click", function() {
     station = searched.val();
+    station = station.toUpperCase();
     console.log(station);
     addToHistory();
     getWeather();
