@@ -46,8 +46,6 @@ function populateWeather(wxData) {
     fltCond.text("Flight Category: " + wxData.flight_category);
     fltCond.removeClass();
     fltCond.addClass(wxData.flight_category);
-
-    addToHistory();
 }
 
 function populateForecast(fxData) {
@@ -82,12 +80,21 @@ function populateForecast(fxData) {
 
 function addToHistory () {
     historyList.prepend('<button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1" type="button"></button>');
-    historyList.children().first().text(wxData.icao);
+    historyList.children().first().text(station);
+    historyList.children().on("click", function() {
+        console.log(this);
+        var buttonClicked = $(this);
+        station = buttonClicked.text();
+        console.log(station);
+        searched.val(station);
+        getWeather();
+    });
 }
 
 searchBtn.on("click", function() {
     station = searched.val();
     console.log(station);
+    addToHistory();
     getWeather();
 });
 
