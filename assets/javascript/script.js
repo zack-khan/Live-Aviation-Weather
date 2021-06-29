@@ -7,6 +7,7 @@ var fltCond = $('#flt-cond');
 var searched = $("#text-in");
 var forecastBoxes = $("#forecast-boxes")
 var station = 'KATL';
+var historyList = $('#history');
 
 
 function getWeather () {
@@ -38,13 +39,15 @@ function getForecast () {
 
 
 function populateWeather(wxData) {
-    titleEl.text(wxData.station.name);
+    titleEl.text(wxData.station.name + " (" + wxData.icao + ")");
     temp.text("Temperature: " + wxData.temperature.fahrenheit + "°F");
     wind.text("Wind: Heading " + wxData.wind.degrees + "° at " + wxData.wind.speed_kts + " kts");
     humidity.text("Humidity: " + wxData.humidity.percent + "%");
     fltCond.text("Flight Category: " + wxData.flight_category);
     fltCond.removeClass();
     fltCond.addClass(wxData.flight_category);
+
+    addToHistory();
 }
 
 function populateForecast(fxData) {
@@ -77,10 +80,17 @@ function populateForecast(fxData) {
     }
 }
 
+function addToHistory () {
+    historyList.prepend('<button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1" type="button"></button>');
+    historyList.children().first().text(wxData.icao);
+}
+
 searchBtn.on("click", function() {
     station = searched.val();
     console.log(station);
     getWeather();
 });
+
+
 
 getWeather();

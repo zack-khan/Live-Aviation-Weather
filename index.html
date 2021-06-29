@@ -13,7 +13,7 @@
 <body>
     <header
         class="flex content-center justify-center text-5xl font-extrabold text-white bg-gradient-to-r from-purple-400 to-blue-500 text-center">
-        <h1>Weather Dashboard</h1>
+        <h1>Aviation Weather Dashboard</h1>
     </header>
 
     <div class="grid grid-cols-4 m-5">
@@ -31,31 +31,15 @@
                 </form>
             </aside>
             <section class="h-auto border-2 p-2 mr-5 mt-2">
-                <h2 id="ex-cities"></h2>
-                <ul>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KATL</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KJFK</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KLAX</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KHOU</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KAUS</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KSGR</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KDEN</button></li>
-                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
-                            type="submit">KLGA</button></li>
+                <ul id="history">
+                    <button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1" type="button">KATL</button>
                 </ul>
             </section>
             </div>
 
         <div class="block col-span-3">
             <section class="h-auto w-full border-2 p-2" id="result-box">
-                <h2 class="text-4xl font-bold ml-2 mb-2" id="searched-city">Atlanta</h2>
+                <h2 class="text-4xl font-bold ml-2 mb-2" id="searched-city"></h2>
                 <ul>
                     <li id="temp">Temperature: </li>
                     <li id="wind">Wind: </li>
