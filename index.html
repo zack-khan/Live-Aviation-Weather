@@ -5,33 +5,121 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./assets/css/style.css" rel="stylesheet">
     <title>Live Weather</title>
 </head>
 
 <body>
-    <header>
+    <header
+        class="flex content-center justify-center text-5xl font-extrabold text-white bg-gradient-to-r from-purple-400 to-blue-500 text-center">
         <h1>Weather Dashboard</h1>
     </header>
 
-    <aside>
-        <h2>Search for a City:</h2>
-        <input type="text">
-        <button type="submit">Search</button>
-    </aside>
+    <div class="grid grid-cols-4 m-5">
+        <div class="block">
+            <aside class="block border-2 p-2 mr-5" id="search-block">
+                <h2 class="text-3xl text-center">Search for a City:</h2>
+                <form class="grid mr-2 content-center">
+                    <input type="text"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 mt-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="text-in">
+                    <br>
+                    <button type="button"
+                        class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-0"
+                        id="search-btn">Search</button>
+                </form>
+            </aside>
+            <section class="h-auto border-2 p-2 mr-5 mt-2">
+                <h2 id="ex-cities"></h2>
+                <ul>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KATL</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KJFK</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KLAX</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KHOU</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KAUS</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KSGR</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KDEN</button></li>
+                    <li><button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1"
+                            type="submit">KLGA</button></li>
+                </ul>
+            </section>
+            </div>
 
-    <div>
-        <h2 class="city"></h2>
+        <div class="block col-span-3">
+            <section class="h-auto w-full border-2 p-2" id="result-box">
+                <h2 class="text-4xl font-bold ml-2 mb-2" id="searched-city">Atlanta</h2>
+                <ul>
+                    <li id="temp">Temperature: </li>
+                    <li id="wind">Wind: </li>
+                    <li id="humidity">Humidity: </li>
+                    <li id="flt-cond">Flight Category: </li>
+                </ul>
+            </section>
+            <section class="h-auto w-full border-2 p-2 mt-5">
+                <h3 class="text-2xl font-bold mb-2">5-Day Forecast:</h3>
+                <div class="flex" id="forecast-boxes">
+                    <section class="box0 bg-gray-700 h-48 w-40 mr-2">
+                        <ul class="text-white text-xl m-2" id="forecast-data0">
+                            <li class="font-bold text-2xl"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section class="box1 bg-gray-700 h-48 w-40 mr-2 ml-2">
+                        <ul class="text-white text-xl m-2" id="forecast-data1">
+                            <li class="font-bold text-2xl"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section class="box2 bg-gray-700 h-48 w-40 mr-2 ml-2">
+                        <ul class="text-white text-xl m-2" id="forecast-data2">
+                            <li class="font-bold text-2xl"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section class="box3 bg-gray-700 h-48 w-40 mr-2 ml-2">
+                        <ul class="text-white text-xl m-2" id="forecast-data3">
+                            <li class="font-bold text-2xl"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                    <section class="box4 bg-gray-700 h-48 w-40 mr-2 ml-2">
+                        <ul class="text-white text-xl m-2" id="forecast-data4">
+                            <li class="font-bold text-2xl"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+        </div>
     </div>
 
-    <div>
-        <h3>5-Day Forecast:</h3>
-        <section class="box0"></section>
-        <section class="box1"></section>
-        <section class="box2"></section>
-        <section class="box3"></section>
-        <section class="box4"></section>
-    </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="./assets/javascript/script.js"></script>
 </body>
 
 </html>

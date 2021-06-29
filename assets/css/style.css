@@ -1,0 +1,34 @@
+.VFR {
+    background-color: greenyellow;
+    width: fit-content;
+    padding: 0px 5px 0px 1px;
+    border-radius: 4px;
+}
+
+.MVFR {
+    background-color: blue;
+    width: fit-content;
+    padding: 0px 5px 0px 1px;
+    border-radius: 4px;
+}
+
+.IFR {
+    background-color: red;
+    width: fit-content;
+    padding: 0px 5px 0px 1px;
+    border-radius: 4px;
+}
+
+.LIFR {
+    background-color: magenta;
+    width: fit-content;
+    padding: 0px 5px 0px 1px;
+    border-radius: 4px;
+}
+
+.UNK {
+    background-color: rgb(170, 170, 170);
+    width: fit-content;
+    padding: 0px 5px 0px 1px;
+    border-radius: 4px;
+}
