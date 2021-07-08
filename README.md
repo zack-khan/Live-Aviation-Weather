@@ -21,4 +21,4 @@ Indicates clouds and visibility are extremely low, or almost none.
 The website expects a 4 letter ICAO identifier code to retrieve data. Some good examples of airports to try out are: KLAX (Los Angeles International), KATL (Atlanta Hartsfield), KIAH (George Bush Intercontinental), KJFK (JFK), or EGLL (Heathrow Airport in London) as an international example. Note the codes that begin with Ks signify airports in the United States, while other countries use their own first letters.
 
 ### Live Serverhttps:
-zack-khan.github.io/Live-Aviation-Weather/
+https://zack-khan.github.io/Live-Aviation-Weather/
