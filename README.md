@@ -6,6 +6,7 @@ This is a basic aviation weather dashboard for pilots. Simply enter an ICAO code
 
 ## Some Details
 
+May not be functioning due to API call limit being exceeded. Sorry.
 Uses CheckWX API.
 
 ### Live Server:
