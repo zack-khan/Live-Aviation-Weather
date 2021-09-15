@@ -49,6 +49,13 @@ function populateWeather(wxData) {
         fltCond.addClass(wxData.flight_category);
     } else {
         titleEl.text(`No Live Data Found!`)
+        temp.text("Temperature:");
+        wind.text("Wind:");
+        humidity.text("Humidity:");
+        visibility.text(`Visibility:`);
+        altSetting.text(`Altimeter Setting:`);
+        fltCond.text("Flight Category:");
+        fltCond.removeClass();
     }
 }
 
