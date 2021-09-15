@@ -34,6 +34,10 @@
     border-radius: 4px;
 }
 
+#text-in {
+    text-align: center;
+}
+
 @media only screen and (max-width: 950px) {
     #main-div {
         display: block;
@@ -77,3 +81,24 @@
         margin-bottom: 5%;
     }
 }
+
+/* @media (prefers-color-scheme: dark) {
+    
+    :root {
+        background-color: rgb(42, 42, 42);
+    }
+
+    h1 {
+        color: black;
+    }
+
+    h2 {
+        color: white;
+    }
+
+    h3 {
+        color: white;
+    }
+
+    .
+} */
