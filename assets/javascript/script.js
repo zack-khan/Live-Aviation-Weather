@@ -38,25 +38,22 @@ async function getForecast () {
 
 function populateWeather(wxData) {
     if (wxData) {
-        titleEl.text(wxData.station.name + " (" + wxData.icao + ")");
-        temp.text("Temperature: " + wxData.temperature.fahrenheit + "°F");
-        wind.text("Wind: Heading " + wxData.wind.degrees + "° at " + wxData.wind.speed_kts + " kts");
-        humidity.text("Humidity: " + wxData.humidity.percent + "%");
-        visibility.text(`Visibility: ${wxData.visibility.miles} mi`);
-        altSetting.text(`Altimeter Setting: ${wxData.barometer.hg}`);
-        fltCond.text("Flight Category: " + wxData.flight_category);
-        fltCond.removeClass();
-        fltCond.addClass(wxData.flight_category);
-    } else {
-        titleEl.text(`No Live Data Found!`)
-        temp.text("Temperature:");
-        wind.text("Wind:");
-        humidity.text("Humidity:");
-        visibility.text(`Visibility:`);
-        altSetting.text(`Altimeter Setting:`);
-        fltCond.text("Flight Category:");
-        fltCond.removeClass();
+        wxData.station.name ? titleEl.text(wxData.station.name + " (" + wxData.icao + ")") : titleEl.text(`No Live Data Found!`);
+        wxData.temperature ? temp.text("Temperature: " + wxData.temperature.fahrenheit + "°F") : temp.text("Temperature:");
+        wxData.wind ? wind.text("Wind: Heading " + wxData.wind.degrees + "° at " + wxData.wind.speed_kts + " kts") : wind.text("Wind:");
+        wxData.humidity ? humidity.text("Humidity: " + wxData.humidity.percent + "%") : humidity.text("Humidity:");
+        wxData.visibility ? visibility.text(`Visibility: ${wxData.visibility.miles} mi`) : visibility.text(`Visibility:`);
+        wxData.barometer ? altSetting.text(`Altimeter Setting: ${wxData.barometer.hg}`) : altSetting.text(`Altimeter Setting:`);
+        if (wxData.flight_category) {
+            fltCond.text("Flight Category: " + wxData.flight_category);
+            fltCond.removeClass();
+            fltCond.addClass(wxData.flight_category);
+        } else {
+            fltCond.text("Flight Category:");
+            fltCond.removeClass();
+        }
     }
+    
 }
 
 function populateForecast(fxData) {
