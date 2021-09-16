@@ -40,6 +40,22 @@
 
 #text-in {
     text-align: center;
+    text-transform: uppercase;
+}
+
+#history button {
+    background-color: rgb(170, 170, 170);
+    color: black;
+    transition: ease-out 0.3s;
+}
+
+#history button:hover {
+    background-color: gray;
+}
+
+header {
+    background: rgb(59,125,242);
+    background: linear-gradient(90deg, rgba(59,125,242,1) 0%, rgba(80,0,107,1) 100%);
 }
 
 @media only screen and (max-width: 950px) {
@@ -49,6 +65,7 @@
 
     #search-block {
         margin: auto;
+        margin-bottom: 1em;
     }
 
     #result-box {
@@ -86,14 +103,21 @@
     }
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     
     :root {
-        background-color: rgb(42, 42, 42);
+        background-color: rgb(19, 18, 18);
+        --border: rgb(91, 151, 255);
+        --border: rgb(37, 33, 33);
+        --secondaryBg: rgb(37, 33, 33);
+        --tertiaryBg: rgb(46, 44, 44);
+        --tertiaryHover: rgb(65, 61, 61);
+        --btnColor: rgb(143, 255, 143);
+        --btnHover: rgb(91, 151, 255);
     }
 
     h1 {
-        color: black;
+        color: white;
     }
 
     h2 {
@@ -104,5 +128,119 @@
         color: white;
     }
 
-    .
-} */
+    li {
+        color: white;
+    }
+
+    header {
+        background: var(--secondaryBg);
+        border-bottom-width: 0px;
+        border-style: solid;
+        border-color: var(--border);
+    }
+
+    .forecast-box {
+        background-color: var(--tertiaryBg);
+    }
+
+    /* *Box Outlines */
+
+    #search-block {
+        background: var(--secondaryBg);
+        border-width: 3px;
+        border-style: solid;
+        border-color: var(--border);
+        border-radius: 0.5em;
+    }
+
+    #result-box {
+        background: var(--secondaryBg);
+        border-width: 3px;
+        border-style: solid;
+        border-color: var(--border);
+        border-radius: 0.5em;
+    }
+
+    #history-sect {
+        background: var(--secondaryBg);
+        border-width: 3px;
+        border-style: solid;
+        border-color: var(--border);
+        border-radius: 0.5em;
+    }
+
+    #forecast-section {
+        background: var(--secondaryBg);
+        border-width: 3px;
+        border-style: solid;
+        border-color: var(--border);
+        border-radius: 0.5em;
+    }
+
+    /* *History Sect */
+
+    #history button {
+        color: white;
+        background-color: var(--tertiaryBg);
+    }
+    
+    #history button:hover {
+        background-color: var(--tertiaryHover);
+    }
+
+    /** Search Sect */
+
+    #text-in {
+        background-color: var(--tertiaryBg);
+        color: white;
+        border-color: rgb(91, 151, 255);
+        transition: ease-out 0.2s;
+    }
+
+    #text-in:focus {
+        outline: none;
+        background-color: var(--tertiaryHover);
+    }
+
+    #text-in:-webkit-autofill {
+        -webkit-box-shadow:0 0 0 50px var(--tertiaryHover) inset;
+        -webkit-text-fill-color: white;
+    }
+
+    #text-in:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0 50px var(--tertiaryHover) inset;
+        -webkit-text-fill-color: white;
+    } 
+
+    #search-btn {
+        background-color: var(--btnColor);
+        color: black;
+        transition: ease-out 0.3s;
+    }
+
+    #search-btn:hover {
+        background-color: var(--btnHover);
+    }
+
+
+    .VFR, .IFR, .LIFR, .MVFR {
+        color: black;
+        font-weight: bold;
+    }
+
+    .VFR {
+        background-color: rgb(113, 255, 120);
+    }
+
+    .IFR {
+        background-color: rgb(255, 94, 94);
+    }
+
+    .LIFR {
+        background-color: rgb(237, 98, 255);
+    }
+
+    .MVFR {
+        background-color: rgb(129, 115, 255);
+    }
+}

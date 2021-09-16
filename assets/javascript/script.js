@@ -113,7 +113,7 @@ function addToHistory () {
         stations.push(station);
         localStorage.setItem('Airports', JSON.stringify(stations));
 
-        historyList.prepend('<button class="text-center text-xl bg-gray-400 rounded-sm w-full hover:bg-gray-500 mb-1" type="button"></button>');
+        historyList.prepend('<button class="text-center text-xl rounded-sm w-full mb-1" type="button"></button>');
         historyList.children().first().text(station);
         historyList.children().on("click", function() {
             // console.log(this);
