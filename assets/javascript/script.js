@@ -40,7 +40,7 @@ function populateWeather(wxData) {
     if (wxData) {
         wxData.station.name ? titleEl.text(wxData.station.name + " (" + wxData.icao + ")") : titleEl.text(`No Live Data Found!`);
         wxData.temperature ? temp.text("Temperature: " + wxData.temperature.fahrenheit + "°F") : temp.text("Temperature:");
-        wxData.wind ? wind.text("Wind: Heading " + wxData.wind.degrees + "° at " + wxData.wind.speed_kts + " kts") : wind.text("Wind:");
+        wxData.wind ? wind.text("Wind: " + wxData.wind.degrees + "° at " + wxData.wind.speed_kts + " kts") : wind.text("Wind:");
         wxData.humidity ? humidity.text("Humidity: " + wxData.humidity.percent + "%") : humidity.text("Humidity:");
         wxData.visibility ? visibility.text(`Visibility: ${wxData.visibility.miles} mi`) : visibility.text(`Visibility:`);
         wxData.barometer ? altSetting.text(`Altimeter Setting: ${wxData.barometer.hg} mmHg`) : altSetting.text(`Altimeter Setting:`);
