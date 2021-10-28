@@ -43,7 +43,7 @@ function populateWeather(wxData) {
         wxData.wind ? wind.text("Wind: Heading " + wxData.wind.degrees + "° at " + wxData.wind.speed_kts + " kts") : wind.text("Wind:");
         wxData.humidity ? humidity.text("Humidity: " + wxData.humidity.percent + "%") : humidity.text("Humidity:");
         wxData.visibility ? visibility.text(`Visibility: ${wxData.visibility.miles} mi`) : visibility.text(`Visibility:`);
-        wxData.barometer ? altSetting.text(`Altimeter Setting: ${wxData.barometer.hg}`) : altSetting.text(`Altimeter Setting:`);
+        wxData.barometer ? altSetting.text(`Altimeter Setting: ${wxData.barometer.hg} mmHg`) : altSetting.text(`Altimeter Setting:`);
         if (wxData.flight_category) {
             fltCond.text("Flight Category: " + wxData.flight_category);
             fltCond.removeClass();
@@ -59,31 +59,43 @@ function populateWeather(wxData) {
 function populateForecast(fxData) {
     for (i = 0; i < 5; i++) {
         if (fxData) {
-            if (fxData.forecast[i].timestamp.from) {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text(fxData.forecast[i].timestamp.from + " to " + fxData.forecast[i].timestamp.to);
-            }
-            if (fxData.forecast[i].clouds) {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text(fxData.forecast[i].clouds[0].text + " at " + fxData.forecast[i].clouds[0].feet + "ft");
-            } else {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("Skies Clear");
-            }
+            if (fxData.forecast[i]) {
+                if (fxData.forecast[i].timestamp.from) {
+                    forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text(fxData.forecast[i].timestamp.from + " to " + fxData.forecast[i].timestamp.to);
+                }
+                if (fxData.forecast[i].clouds) {
+                    if (fxData.forecast[i].clouds[0].text.includes("Clear")) {
+                        forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text(fxData.forecast[i].clouds[0].text);
+                    } else {
+                        forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text(fxData.forecast[i].clouds[0].text + " at " + fxData.forecast[i].clouds[0].feet + "ft");
+                    }
+                } else {
+                    forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("No Cloud Forecast");
+                }
 
-            if (fxData.forecast[i].conditions) {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text(fxData.forecast[i].conditions[0].text);
-            } else {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text("No Forecast Precip");
-            }
+                if (fxData.forecast[i].conditions) {
+                    forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text(fxData.forecast[i].conditions[0].text);
+                } else {
+                    forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text("No Forecast Precip");
+                }
 
-            if (fxData.forecast[i].wind) {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text(fxData.forecast[i].wind.degrees + "° at " + fxData.forecast[i].wind.speed_kts + " kts");
-            } else {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text("No Forecast Wind");
-            }
+                if (fxData.forecast[i].wind) {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text(fxData.forecast[i].wind.degrees + "° at " + fxData.forecast[i].wind.speed_kts + " kts");
+                } else {
+                    forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text("No Forecast Wind");
+                }
 
-            if (fxData.forecast[i].visibility) {
-            forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("Visibility: " + fxData.forecast[i].visibility.miles + " mi");
+                if (fxData.forecast[i].visibility) {
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("Visibility: " + fxData.forecast[i].visibility.miles + " mi");
+                } else {
+                    forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("No Vis Data");
+                }
             } else {
-                forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("No Vis Data");
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text("No Forecast Data");
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(1).text("");
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(2).text("");
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(3).text("");
+                forecastBoxes.children().eq(i).children().eq(0).children().eq(4).text("");
             }
         } else {
             forecastBoxes.children().eq(i).children().eq(0).children().eq(0).text("No Forecast Data");
@@ -153,5 +165,12 @@ searchBtn.on("click", function() {
     } else {
         addToHistory();
         getWeather();
+    }
+});
+
+searched.on("keypress", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        searchBtn.click();
     }
 });
